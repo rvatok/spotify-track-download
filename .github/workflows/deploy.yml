@@ -16,7 +16,7 @@ jobs:
         source myenv/bin/activate
         pip install -r requirements.txt
     - name: Deploy to PythonAnywhere
-      uses: rvatok/deploy-action@v2.2.1
+      uses: rvatok/spotify-track-download
       with:
         api_token: ${{ secrets.PA_API_TOKEN }}
         username: kremor  
