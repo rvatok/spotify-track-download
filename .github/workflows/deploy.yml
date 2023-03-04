@@ -1,0 +1,25 @@
+name: PythonAnywhere Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        python3 -m venv myenv
+        source myenv/bin/activate
+        pip install -r requirements.txt
+    - name: Deploy to PythonAnywhere
+      uses: chrischdi/pythonanywhere-deploy-action@v2.2.1
+      with:
+        api_token: ${{ secrets.PA_API_TOKEN }}
+        username: kremor  
+        password: ${{ secrets.PA_PASSWORD }}
+        domain: kremor.pythonanywhere.com
+        project: kremor.pythonanywhere.com
